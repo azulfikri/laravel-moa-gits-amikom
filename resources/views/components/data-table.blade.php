@@ -18,8 +18,26 @@
         <tbody>
             @foreach ($items as $item)
                 <tr>
-                    @foreach ($item as $value)
+                    {{-- @foreach ($item as $value)
                         <td class="border px-4 py-2">{{ $value }}</td>
+                    @endforeach --}}
+                    @foreach ($headers as $key)
+                     @php
+                            $column = strtolower($key);
+
+                            $formatter = $formatters[$column] ?? null;
+                    @endphp
+                    <td class="px-4 py-2 border">
+                            @if($formatter)
+                                @include($formatter, [
+                                    'item' => $item,
+                                    'column' => $column
+                                ])
+                            @else
+                              {{ $item[strtolower($key)] ?? $item[$key] ?? '' }}
+                            @endif
+                        </td>
+                        {{-- <td class="border px-4 py-2">{{ $item[strtolower($key)] ?? $item[$key] ?? '' }}</td> --}}
                     @endforeach
                     @if ($editable || $deletable)
                         <td class="border-b px-4 py-2">

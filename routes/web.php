@@ -22,9 +22,33 @@ Route::get('/', function () {
     ];
     $dataTable = [
         'items' => [
-            ['id' => '1', 'name' => 'Alice', 'email' => 'alice@example.com'],
-            ['id' => '2', 'name' => 'Bob', 'email' => 'bob@example.com'],
-            ['id' => '3', 'name' => 'Charlie', 'email' => 'charlie@example.com'],
+            [
+                'id' => '1',
+                'name' => 'Alice',
+                'email' => 'alice@example.com',
+                'photo' => 'https://randomuser.me/api/portraits/women/0.jpg',
+                'balance' => 1000000,
+                'status' => 'active',
+                'birth' => '1990-01-01',
+            ],
+            [
+                'id' => '2',
+                'name' => 'Bob',
+                'email' => 'bob@example.com',
+                'photo' => 'https://randomuser.me/api/portraits/men/1.jpg',
+                'balance' => 2000000,
+                'status' => 'pending',
+                'birth' => '1985-05-15',
+            ],
+            [
+                'id' => '3',
+                'name' => 'Charlie',
+                'email' => 'charlie@example.com',
+                'photo' => 'https://randomuser.me/api/portraits/men/2.jpg',
+                'balance' => 3000000,
+                'status' => 'inactive',
+                'birth' => '1980-12-30',
+            ],
         ]
     ];
     return view('welcome', compact('card', 'dataTable'));

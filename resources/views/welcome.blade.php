@@ -39,8 +39,13 @@
                 </x-card>
                 @endforeach
             </div>
+
+            {{-- <div class="h-[200px]">
+
+        </div> --}}
+
         <x-data-table 
-        :headers="['ID', 'Name', 'Email']" 
+        :headers="['ID', 'Name', 'Email', 'Photo', 'Balance', 'Status', 'Birth']" 
         :items="$dataTable['items']"
         creatable="true"
         editable="true"
@@ -48,7 +53,14 @@
 
         createRoute="users.create"
         editRoute="users.edit"
-        deleteRoute="users.delete" />
+        deleteRoute="users.delete"
+        :formatters="[
+            'photo' => 'components.partials.tableFormat.image',
+            'balance' => 'components.partials.tableFormat.currency',
+            'status' => 'components.partials.tableFormat.badge',
+            'birth' => 'components.partials.tableFormat.date',
+            ]"
+        />
 
         </div>
 
