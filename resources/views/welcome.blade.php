@@ -47,13 +47,13 @@
         <x-data-table 
         :headers="['ID', 'Name', 'Email', 'Photo', 'Balance', 'Status', 'Birth']" 
         :items="$dataTable['items']"
-        creatable="false"
-        editable="false"
-        deletable="false"
+        creatable="true"
+        editable="true"
+        deletable="true"
 
-        {{-- createRoute="users.create"
+        createRoute="users.create"
         editRoute="users.edit"
-        deleteRoute="users.delete" --}}
+        deleteRoute="users.delete"
         :formatters="[
             'photo' => 'components.partials.tableFormat.image',
             'balance' => 'components.partials.tableFormat.currency',
@@ -63,6 +63,14 @@
         />
 
         </div>
+
+        <form method="POST" action="{{ route('send.message') }}">
+            @csrf
+            <input type="text" name="message" placeholder="Enter your message" class="border border-gray-300 rounded-lg px-4 py-2 w-64">
+            <button type="submit" class="mt-10 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                Send Message
+            </button>
+        </form>
 
 
 

@@ -42,10 +42,10 @@
                     @if ($editable || $deletable)
                         <td class="border-b px-4 py-2">
                             @if($editable && $editRoute)
-                                <a href="{{ route($editRoute, ['id' => $item['id']]) }}" class="text-blue-500 mr-2">Edit</a>
+                                <a href="{{ route($editRoute, $item['id']) }}" class="text-blue-500 mr-2">Edit</a>
                             @endif
                             @if($deletable && $deleteRoute)
-                                <form action="{{ route($deleteRoute, [ 'id' => $item['id']]) }}" method="POST" class="inline">
+                                <form action="{{ route($deleteRoute, $item['id']) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500">Delete</button>
