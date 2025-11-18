@@ -39,7 +39,16 @@
                 </x-card>
                 @endforeach
             </div>
-        <x-data-table :headers="['ID', 'Name', 'Email']" :items="$dataTable['items']" />
+        <x-data-table 
+        :headers="['ID', 'Name', 'Email']" 
+        :items="$dataTable['items']"
+        creatable="true"
+        editable="true"
+        deletable="true"
+
+        createRoute="users.create"
+        editRoute="users.edit"
+        deleteRoute="users.delete" />
 
         </div>
 

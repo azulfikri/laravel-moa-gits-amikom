@@ -22,9 +22,9 @@ Route::get('/', function () {
     ];
     $dataTable = [
         'items' => [
-            ['1', 'Alice', 'alice@example.com'],
-            ['2', 'Bob', 'bob@example.com'],
-            ['3', 'Charlie', 'charlie@example.com'],
+            ['id' => '1', 'name' => 'Alice', 'email' => 'alice@example.com'],
+            ['id' => '2', 'name' => 'Bob', 'email' => 'bob@example.com'],
+            ['id' => '3', 'name' => 'Charlie', 'email' => 'charlie@example.com'],
         ]
     ];
     return view('welcome', compact('card', 'dataTable'));
@@ -32,3 +32,14 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/users/create', function () {
+    return "User Create Page";
+})->name('users.create');
+
+Route::get('/users/{id}/edit', function ($id) {
+    return "Edit User with ID: " . $id;
+})->name('users.edit');
+
+Route::delete('/users/{id}', function ($id) {
+    return "Delete User with ID: " . $id;
+})->name('users.delete');
