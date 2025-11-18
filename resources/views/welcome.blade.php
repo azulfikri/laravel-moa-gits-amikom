@@ -47,13 +47,13 @@
         <x-data-table 
         :headers="['ID', 'Name', 'Email', 'Photo', 'Balance', 'Status', 'Birth']" 
         :items="$dataTable['items']"
-        creatable="true"
-        editable="true"
-        deletable="true"
+        creatable="false"
+        editable="false"
+        deletable="false"
 
-        createRoute="users.create"
+        {{-- createRoute="users.create"
         editRoute="users.edit"
-        deleteRoute="users.delete"
+        deleteRoute="users.delete" --}}
         :formatters="[
             'photo' => 'components.partials.tableFormat.image',
             'balance' => 'components.partials.tableFormat.currency',
